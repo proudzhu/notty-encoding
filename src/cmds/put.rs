@@ -24,7 +24,9 @@ impl PutMedia {
 }
 
 impl EscCode for PutMedia {
-    const OPCODE: u16 = 0x14;
+    fn opcode(&self) -> u16 {
+        0x14
+    }
     fn args(&self) -> Vec<String> {
         encode_args![self.width, self.height, self.position]
     }
@@ -56,7 +58,9 @@ impl PutMediaAt {
     }
 }
 impl EscCode for PutMediaAt {
-    const OPCODE: u16 = 0x15;
+    fn opcode(&self) -> u16 {
+        0x15
+    }
     fn args(&self) -> Vec<String> {
         encode_args![self.coords, self.width, self.height, self.position]
     }

@@ -1,6 +1,6 @@
 pub trait EscCode {
 
-    const OPCODE: u16;
+    fn opcode(&self) -> u16;
 
     fn args(&self) -> Vec<String> {
         Vec::new()
@@ -11,7 +11,7 @@ pub trait EscCode {
     }
 
     fn encode(&self) -> String {
-        let mut string = format!("\x1b_[{:x}", Self::OPCODE);
+        let mut string = format!("\x1b_[{:x}", Self::opcode(self));
         for arg in self.args() {
             string.push(';');
             string.push_str(&arg);

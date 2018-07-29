@@ -14,7 +14,9 @@ impl Move {
 }
 
 impl EscCode for Move {
-    const OPCODE: u16 = 0x18;
+    fn opcode(&self) -> u16 {
+        0x18
+    }
     fn args(&self) -> Vec<String> {
         encode_args![self.movement]
     }
@@ -36,7 +38,9 @@ impl ScrollScreen {
 }
 
 impl EscCode for ScrollScreen {
-    const OPCODE: u16 = 0x19;
+    fn opcode(&self) -> u16 {
+        0x19
+    }
     fn args(&self) -> Vec<String> {
         encode_args![self.dir, self.n]
     }
